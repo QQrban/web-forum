@@ -1,0 +1,47 @@
+{{define "footer"}}
+<footer>
+  <div class="bg-with-stroke footer">
+    <div class="footer__main-statistics">
+      <div class="main-statistics__left-block">
+        <h4 class="main-statistics__heading">Statistics</h4>
+        <div class="main-statistics__numbers">
+          <span id="main-statistics__number-of-members">
+            {{ .TotalMembers }}
+            <!-- TOTAL MEMBERS FROM API -->
+          </span>
+          members &#8226;
+          <span id="main-statistics__number-of-topics">
+            {{ .TotalTopics }}
+            <!-- TOTAL TOPICS FROM API -->
+          </span>
+          topics &#8226;
+          <span id="main-statistics__number-of-topics">
+            {{ .TotalPosts }}
+            <!-- TOTAL POSTS FROM API -->
+          </span>
+          posts
+        </div>
+      </div>
+      <div class="main-statistics__right-block">
+        Users online:
+        <span class="main-statistics__number-of-online">
+          {{ .TotalOnline }}
+          <!-- TOTAL USERS ONLINE FROM API IF POSSIBLE -->
+        </span>
+      </div>
+    </div>
+    <div class="footer__additional-info">
+      <div class="additional-info__left-block">
+        Our newest member is called:
+        <span class="additional-info__name">{{ .LatestMember }}</span>
+      </div>
+      <div class="additional-info__right-block">
+        <span class="aditional-info__developed">Developed by:</span>
+        <div>Toomas Vooglaid</div>
+        <div>Kurban Ramazanov</div>
+      </div>
+    </div>
+  </div>
+  <div id="designed-by">Designed by Kurban Ramazanov</div>
+</footer>
+{{end}}

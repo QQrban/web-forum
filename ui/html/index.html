@@ -1,0 +1,224 @@
+{{define "base"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forum</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/icon.png" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div id="loader" class="hidden">
+      <span class="loader"></span>
+    </div>
+    <div id="overlay"></div>
+    <div id="select-avatar"></div>
+    {{template "header" .}}
+    <main class="main-page">
+      <div class="main-page__content">
+        <div class="main-page__left-block">
+          {{template "banner" .}} {{template "search" .}}
+          <span class="lime-pill block-name">Forums</span>
+          {{- range .Categories}}{{ with .Category }}
+          <div class="forums-list {{ .Short }}-list">
+            <button class="forums-list__accordion">
+              <svg
+                class="accordion-icon"
+                width="44px"
+                height="44px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M10 7L15 12L10 17"
+                    stroke="#ffffff"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </svg>
+              <div class="accordion-name__container">
+                <div class="accordion-name__heading">{{ .Title }}</div>
+                <div class="accordion-name__text">{{ .Intro }}</div>
+              </div>
+            </button>
+            {{- end }}
+            <div class="forums-list__panel">
+              {{- range .Topics }} {{- with .Category }}
+              <div data-id="{{ .Id }}" class="panel__item">
+                <div class="panel__item-info">
+                  <img src="/static/images/topicimg.png" alt="" />
+                  <div class="panel__item-name__container">
+                    <h4 class="panel__item-name__heading">{{ .Title }}</h4>
+                    <div class="panel__item-name__text">{{ .Intro }}</div>
+                  </div>
+                  {{- end }}
+                </div>
+                <div class="panel__item-comments">
+                  <div class="item-comments__comments main-page__comments">
+                    <img src="/static/images/comment.png" alt="comment" />
+                    <div class="comments__number">
+                      {{ .CommentsNumber }}
+                      <!-- NUMBER FROM API! -->
+                    </div>
+                  </div>
+                  {{- with .LastComment }}
+                  <div class="comments__commentator main-topics__commentator">
+                    <div
+                      class="comments__commentator__avatar topics__avatar-container"
+                    >
+                      <div class="avatar-container">
+                        <img src="{{ .Avatar }}" alt="avatar" />
+                      </div>
+                      <!-- IMG FROM API -->
+                    </div>
+                    <div class="commentator__info">
+                      <div
+                        data-id="{{ .Post_Id}}"
+                        class="commentator__topic not__link main-page__commentator__topic"
+                      >
+                        {{ .Post_Title }}
+                        <!-- DATA FROM API -->
+                      </div>
+                      <div class="commentator__name-date">
+                        <div class="commentator__name not__link">
+                          {{ .Username }}
+                          <!-- NAME FROM API -->
+                        </div>
+                        &#8226;
+                        <div class="commentator__date">
+                          {{ .Created }}
+                          <!-- TIME FROM API -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {{- end }}
+                </div>
+              </div>
+              {{- end }}
+            </div>
+          </div>
+          {{- end }}
+        </div>
+        <div class="main-page__right-block">
+          <div class="right-block__item bg-with-stroke top-coders">
+            <h3 class="top-coders__heading">TOP CODERS</h3>
+            <div class="top-coders__content">
+              {{- range .TopCoders }}
+              <div class="top-coders__item">
+                <div class="top-coders__avatar-container">
+                  <div class="top-coders__avatar">
+                    <img src="{{ .Avatar }}" alt="avatar" />
+                    <!-- IMG FROM API -->
+                  </div>
+                </div>
+                <div class="top-coders__name">
+                  {{ .Username }}
+                  <!-- NAME FROM API -->
+                </div>
+              </div>
+              {{- end }}
+            </div>
+          </div>
+          <div class="right-block__item bg-with-stroke latest-posts">
+            <h3 class="top-coders__heading">LATEST POSTS</h3>
+            <div class="top-coders__content">
+              {{- range .LatestPosts }}
+              <div class="comments__commentator latest-posts__commentator">
+                {{- with .Author }}
+                <div class="comments__commentator__avatar">
+                  <div class="avatar-container">
+                    <img src="{{ .Avatar }}" alt="avatar" />
+                  </div>
+                  <!-- IMG & STATUS FROM API -->
+                </div>
+                {{- end }}
+                <div class="commentator__info">
+                  {{- with .Post }}
+                  <div
+                    data-id="{{ .Id}}"
+                    class="commentator__topic latest-posts__commentator"
+                  >
+                    {{ .Title }}
+                    <!-- DATA FROM API -->
+                  </div>
+                  {{- end }}
+                  <div class="commentator__name-date">
+                    {{- with .Author }}
+                    <div class="commentator__name">
+                      {{ .Username }}
+                      <!-- NAME FROM API -->
+                    </div>
+                    {{- end }} &#8226; {{- with .Post }}
+                    <div class="commentator__date">
+                      {{ .Created }}
+                      <!-- TIME FROM API -->
+                    </div>
+                    {{- end }}
+                  </div>
+                </div>
+              </div>
+              {{- end }}
+            </div>
+          </div>
+          <div class="right-block__item bg-with-stroke hot-topics">
+            <h3 class="top-coders__heading">HOT TOPICS</h3>
+            <div class="top-coders__content">
+              {{- range .HotTopics }}
+              <div class="comments__commentator hot-topics__commentator">
+                <div class="comments__commentator__avatar">
+                  {{- with .Author }}
+                  <div class="avatar-container">
+                    <img src="{{ .Avatar }}" alt="avatar" />
+                  </div>
+                  {{- end }}
+                  <!-- IMG & STATUS FROM API -->
+                </div>
+                <div class="commentator__info">
+                  {{- with .Post }}
+                  <div
+                    data-id="{{ .Id}}"
+                    class="commentator__topic hot-topics__commentator"
+                  >
+                    {{ .Title }}
+                    <!-- DATA FROM API -->
+                  </div>
+                  {{- end }}
+                  <div class="commentator__name-date">
+                    {{- with .Author }}
+                    <div class="commentator__name">
+                      {{ .Username }}
+                      <!-- NAME FROM API -->
+                    </div>
+                    {{- end }} &#8226; {{- with .Post }}
+                    <div class="commentator__date">
+                      {{ .Created }}
+                      <!-- TIME FROM API -->
+                    </div>
+                    {{- end }}
+                  </div>
+                </div>
+              </div>
+              {{- end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{template "footer" .Stats}}
+    <script type="module" src="/static/js/App.js"></script>
+  </body>
+</html>
+
+{{end}}

@@ -1,0 +1,124 @@
+.activity-page {
+  margin-top: 23px;
+}
+
+.activity__content {
+  margin-top: 23px;
+}
+
+.activity__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity__back {
+  background: var(--color-lime);
+  color: var(--color-black);
+  padding: 6px 12px;
+}
+
+.activity__container {
+  margin-top: 23px;
+  display: flex;
+  justify-content: space-between;
+  gap: 23px;
+}
+
+.activity__left-block,
+.activity__right-block {
+  width: 50%;
+}
+
+.left-block__content,
+.right-block__content {
+  margin-top: 23px;
+}
+
+.activity__container h4 {
+  font-size: 30px;
+  color: var(--color-white);
+}
+
+.activity__post-item {
+  width: 100%;
+}
+
+.activity__back .left-block__content {
+  margin-top: 23px;
+}
+
+.activity__no-content {
+  font-size: 22px;
+  padding: 12px;
+  color: var(--color-white);
+}
+
+#remove-like-modal {
+  position: fixed;
+  width: 280px;
+  height: 250px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2222;
+  border: 3px solid var(--color-lime);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+#remove-like__close {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#remove-like__close img {
+  cursor: pointer;
+}
+
+.remove-like__content {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  justify-content: space-between;
+}
+
+#remove-like-modal h5 {
+  color: var(--color-white);
+  font-size: 32px;
+  text-align: center;
+}
+
+.remove-like__btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btns {
+  font-size: 21px;
+  padding: 5px 10px;
+  border-radius: 0px 8px 0px 8px;
+  color: var(--color-black);
+}
+
+.btn__yes {
+  background: var(--color-green);
+}
+
+.btn__yes:hover {
+  color: var(--color-green);
+  outline: 1px solid var(--color-green);
+  background: var(--color-black);
+}
+
+.btn__no {
+  background: var(--color-red);
+}
+
+.btn__no:hover {
+  color: var(--color-red);
+  outline: 1px solid var(--color-red);
+  background: var(--color-black);
+}

@@ -1,0 +1,27 @@
+{{define "404"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div class="error-page__container">
+      <div class="error-page__number">
+        <h1>404</h1>
+        <img
+          src="/static/images/lost-avocado.png"
+          alt="feeling-empty-avocado"
+        />
+      </div>
+      <p class="error-page__info-text">
+        We are very sorry, but the page you are looking for
+        <span>({{ . }})</span> does not exist (yet).
+      </p>
+      <a class="error-page__btn" href="/">Back to Homepage</a>
+    </div>
+  </body>
+</html>
+{{end}}

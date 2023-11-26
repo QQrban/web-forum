@@ -1,0 +1,369 @@
+.topics-page {
+  margin-top: 23px;
+}
+
+.topics__filters {
+  margin-top: 23px;
+  padding: 10px;
+  font-size: 24px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--color-white);
+}
+
+.filters__active {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#clear__filters {
+  color: var(--color-white);
+  font-size: 25px;
+}
+
+#clear__filters:hover {
+  text-shadow: 1px 1px 4px #6c6b6b;
+}
+
+.filter__btns {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.filters__btn {
+  padding: 5px 10px;
+  color: inherit;
+  font-size: inherit;
+  background: #0d2852;
+  width: 150px;
+  height: 40px;
+}
+
+.filters__btn:hover,
+.filterBy:hover {
+  background: var(--color-main-dark-blue);
+}
+
+#btn__byCategory {
+  padding: 0;
+  position: relative;
+  cursor: default;
+}
+
+#btn__byCategory.active-topic {
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+
+#btn__byCategory.active-topic span {
+  margin-top: -2px;
+}
+
+#clickable-btn__category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  cursor: pointer;
+}
+
+#clickable-btn__category {
+  cursor: pointer;
+}
+
+#filters__categories {
+  display: none;
+  z-index: 9999;
+  position: absolute;
+  top: 32px;
+  left: -2px;
+  width: 150px;
+  padding: 10px 10px 5px 10px;
+  border-top: none;
+  max-height: 290px;
+  overflow-y: scroll;
+  border-radius: 0 0 8px 8px;
+}
+
+#filters__categories.active-topic {
+  display: block;
+}
+
+.filters__categories__item {
+  display: flex;
+  padding: 4px;
+  gap: 10px;
+  align-items: center;
+}
+
+.filters__categories__item label {
+  cursor: pointer;
+  font-size: 20px;
+  text-align: left;
+}
+
+.filter-checkbox {
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+
+.dropdown-svg {
+  transition: 0.2s all;
+}
+
+.dropdown-svg.active-topic {
+  transform: rotate(-180deg);
+}
+
+.topics__all-posts {
+  margin-top: 23px;
+}
+
+.topics__content__header {
+  margin-top: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topic__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: var(--linear-bg);
+}
+
+.topic__header__names {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topic__header__name {
+  font-size: 26px;
+  color: var(--color-gray);
+}
+
+.topic__header__subname {
+  color: var(--color-white);
+}
+
+.topic__header__btn-container {
+  position: relative;
+}
+
+.topic__header__btn-label {
+  display: none;
+  position: absolute;
+  left: -100px;
+  top: -20px;
+  background: var(--color-gray);
+  font-size: 19px;
+  padding: 5px 10px;
+}
+
+.all-posts__container {
+  position: relative;
+}
+
+.all-posts__container.loading {
+  min-height: 200px;
+}
+
+.all-posts__item {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.all-posts__item:hover {
+  cursor: pointer;
+  background-color: #13273e;
+}
+
+.all-posts__item:not(:last-child) {
+  border-bottom: 1px solid var(--color-stroke-blue);
+}
+
+.all-posts__comments-likes-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.comments__likes-dislikes {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.likes-dislikes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.likes-dislikes__amount {
+  font-size: 19px;
+  min-width: 10px;
+  max-width: 70px;
+  color: var(--color-white);
+}
+
+.all-posts__commentator {
+  flex-direction: column;
+}
+
+.svg-likes,
+.svg-dislikes {
+  cursor: pointer;
+}
+
+.svg-likes *,
+.svg-dislikes * {
+  pointer-events: none;
+}
+
+.all-posts__item-comments {
+  display: flex;
+  width: 220px;
+  justify-content: space-between;
+}
+
+.all-posts__comment {
+  width: 140px;
+}
+
+.new-post__modal {
+  display: none;
+  position: fixed;
+  padding: 22px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 750px;
+  min-width: 750px;
+  z-index: 9999;
+  flex-direction: column;
+  background: var(--color-main-dark-blue);
+  border-radius: 8px;
+  border: 5px solid var(--color-stroke-blue);
+}
+
+.new-post__modal h2 {
+  text-align: center;
+  color: var(--color-white);
+  font-size: 44px;
+}
+
+#new-post__modal__form {
+  gap: 40px;
+  position: relative;
+}
+
+#new-post__modal__form-title {
+  font-family: var(--ff-mons);
+}
+
+.new-post__modal__form-text {
+  outline: none;
+  border: 1px solid var(--color-stroke-blue);
+  resize: none;
+  font-family: var(--ff-mons);
+  height: 400px;
+  padding: 10px;
+}
+
+#new-post__modal__form-tags {
+  font-family: var(--ff-mons);
+}
+
+.new-post__modal__form-submit {
+  align-self: center;
+  font-size: 32px;
+  padding: 10px 25px;
+  letter-spacing: 1.5px;
+  border-radius: 0 16px 0 16px;
+  transition: 0.23s;
+}
+
+.new-post__modal__form-submit:hover {
+  background: var(--color-black);
+  color: var(--color-lime);
+  outline: 1px solid var(--color-lime);
+}
+
+.new-post__modal__close-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#new-post__modal__close-svg {
+  cursor: pointer;
+}
+
+#add__post__error {
+  position: absolute;
+  color: var(--color-error);
+  bottom: 65px;
+  width: 100%;
+  font-size: 19px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#btn__byCreationDate {
+  position: relative;
+}
+
+#btn__byCreationDate.active-filter_btn {
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+  margin-top: -2px;
+}
+
+#btn__byCreationDate.active-bg,
+#btn__mostLikes.active-bg,
+#btn__byCategory.active-bg {
+  background: var(--color-main-dark-blue);
+}
+
+#creationDate__filters__container {
+  position: absolute;
+  left: -2px;
+  width: 150px;
+  top: 35px;
+  font-size: 19px;
+  text-transform: lowercase;
+  display: flex;
+  flex-direction: column;
+  z-index: 7979;
+  overflow: hidden;
+  background: #0d2852;
+  border-top: none;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.filterBy {
+  padding: 15px 20px 10px 20px;
+  text-align: left;
+}
+
+.active-filter {
+  position: relative;
+}
+
+.active-filter::before {
+  content: "✓";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  left: 2px;
+}

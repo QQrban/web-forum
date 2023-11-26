@@ -1,0 +1,166 @@
+{{define "topic"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {{- with .Topic }}{{ with .Category }}
+    <title>{{ .Title }}</title>
+    {{- end }}{{- end }}
+    <link rel="icon" type="image/x-icon" href="/static/images/icon.png" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div id="loader" class="hidden">
+      <span class="loader"></span>
+    </div>
+    <div id="overlay"></div>
+    <div id="select-avatar"></div>
+    <div class="new-post__modal">
+      <div class="new-post__modal__close-container">
+        <img
+          id="new-post__modal__close-svg"
+          src="/static/images/close.svg"
+          alt="close"
+        />
+      </div>
+      <h2>Create New Post</h2>
+      <form
+        id="new-post__modal__form"
+        class="modal__window__inputs"
+        method="POST"
+        action="/post"
+      >
+        <input
+          class="modal__window__input"
+          placeholder="Add a Title..."
+          type="text"
+          maxlength="25"
+          name="new-post__modal__form-title"
+          id="new-post__modal__form-title"
+        />
+        <textarea
+          class="new-post__modal__form-text modal__window__input"
+          placeholder="Add a Description..."
+          name="new-post__modal__form-text"
+          id="new-post__modal__form-text"
+          maxlength="1500"
+        ></textarea>
+        <input
+          class="modal__window__input"
+          placeholder="Add Tags... (e.g. studying, sports, playing golf)"
+          type="text"
+          name="new-post__modal__form-tags"
+          id="new-post__modal__form-tags"
+        />
+        <span id="add__post__error"></span>
+        <button class="lime-pill new-post__modal__form-submit">Submit</button>
+      </form>
+    </div>
+    {{- template "header" . }}
+    <main class="topics-page">
+      {{- template "banner" .}} {{template "search" .}} {{- with .Topic }}
+      <div class="topics__content">
+        <div class="topics__content__header">
+          <div class="lime-pill">
+            {{- with .Parent }} {{ .Title }} {{- end }}
+          </div>
+          <div class="lime-pill back-button">Go Back</div>
+        </div>
+        <div class="bg-with-stroke topics__filters">
+          <div class="filters__active">
+            <span class="filters__sortBy">Sort by:</span>
+            <div class="filter__btns">
+              <button class="bg-with-stroke filters__btn" id="btn__mostLikes">
+                Liked Posts
+              </button>
+              <button
+                class="bg-with-stroke filters__btn"
+                id="btn__byCreationDate"
+              >
+                <span>Creation Date</span>
+                <div
+                  id="creationDate__filters__container"
+                  class="bg-with-stroke hidden"
+                >
+                  <span class="filterBy" id="creationDate__filters__newest"
+                    >Newest First</span
+                  >
+                  <span class="filterBy" id="creationDate__filters__oldest"
+                    >Oldest First</span
+                  >
+                </div>
+              </button>
+              <button class="bg-with-stroke filters__btn" id="btn__byCategory">
+                <div id="clickable-btn__category">
+                  <span>Tags</span>
+                  <svg
+                    class="dropdown-svg"
+                    width="31px"
+                    height="31px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <path
+                        d="M7 10L12 15L17 10"
+                        stroke="#ffffff"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </g>
+                  </svg>
+                </div>
+                <ul class="bg-with-stroke" id="filters__categories"></ul>
+              </button>
+            </div>
+          </div>
+          <button id="clear__filters">Clear</button>
+        </div>
+        <div class="bg-with-stroke topics__all-posts">
+          <div class="topic__header">
+            <div class="topic__header__names">
+              {{- with .Category }}
+              <div class="topic__header__name">{{ .Title }}</div>
+              <div class="topic__header__subname">{{ .Intro }}</div>
+              {{- end }}
+            </div>
+            <button class="topic__header__btn-container">
+              <span class="topic__header__btn-label">Add New Post</span>
+              <svg
+                id="topic__header__btn-svg"
+                xmlns="http://www.w3.org/2000/svg"
+                width="64px"
+                height="64px"
+                viewBox="0 0 64 64"
+                fill="none"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M34.6666 24C34.6666 22.5273 33.4727 21.3333 31.9999 21.3333C30.5271 21.3333 29.3333 22.5273 29.3333 24V29.3333H23.9999C22.5272 29.3333 21.3333 30.5272 21.3333 32C21.3333 33.4728 22.5272 34.6667 23.9999 34.6667H29.3333V40C29.3333 41.4728 30.5271 42.6667 31.9999 42.6667C33.4727 42.6667 34.6666 41.4728 34.6666 40V34.6667H39.9999C41.4727 34.6667 42.6666 33.4728 42.6666 32C42.6666 30.5272 41.4727 29.3333 39.9999 29.3333H34.6666V24ZM19.3334 6.36753C22.7967 5.59788 26.9981 5.33334 31.9999 5.33334C37.0018 5.33334 41.2031 5.59788 44.6663 6.36753C48.1599 7.14393 51.0634 8.46934 53.297 10.7029C55.5306 12.9364 56.8559 15.8401 57.6325 19.3335C58.4021 22.7968 58.6666 26.9981 58.6666 32C58.6666 37.0019 58.4021 41.2032 57.6325 44.6664C56.8559 48.16 55.5306 51.0635 53.297 53.2971C51.0634 55.5307 48.1599 56.856 44.6663 57.6325C41.2031 58.4021 37.0018 58.6667 31.9999 58.6667C26.9981 58.6667 22.7967 58.4021 19.3334 57.6325C15.84 56.856 12.9363 55.5307 10.7028 53.2971C8.46925 51.0635 7.14384 48.16 6.36744 44.6664C5.59779 41.2032 5.33325 37.0019 5.33325 32C5.33325 26.9981 5.59779 22.7968 6.36744 19.3335C7.14384 15.8401 8.46925 12.9364 10.7028 10.7029C12.9363 8.46934 15.84 7.14393 19.3334 6.36753Z"
+                  fill="#DCF900"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="all-posts__container loading">
+            <span class="post-loader"></span>
+          </div>
+        </div>
+      </div>
+      {{- end }}
+    </main>
+    {{- template "footer" .Stats }}
+    <script type="module" src="/static/js/App.js"></script>
+  </body>
+</html>
+{{- end }}

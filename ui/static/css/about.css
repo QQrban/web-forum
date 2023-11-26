@@ -1,0 +1,30 @@
+.about__container {
+  min-height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about__heading {
+  color: var(--color-lime);
+  font-size: 69px;
+}
+.about__text {
+  color: var(--color-white);
+  font-size: 32px;
+  max-width: 800px;
+}
+.about__hint {
+  font-size: 22px;
+  color: var(--color-text);
+}
+
+.about__hint span {
+  color: var(--color-lime);
+  text-decoration: underline;
+}
+
+.about__img {
+  max-width: 320px;
+}

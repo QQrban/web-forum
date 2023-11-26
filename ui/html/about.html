@@ -1,0 +1,41 @@
+{{define "about"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/icon.png" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="about__container">
+        <h1 class="about__heading">About forum project</h1>
+        <div class="about__img">
+          <img src="/static/images/about-frog.png" alt="frog" />
+        </div>
+        <div class="about__text">
+          Hello, we are students from kood/Jõhvi. This task is completed as part
+          of our training. This project is a forum dedicated to kood/Jõhvi
+          students, where they can register and choose a suitable avatar for
+          themselves, create posts, write comments, and give likes/dislikes!
+        </div>
+        <div class="about__hint">
+          For reference, please see
+          <a href="https://github.com/01-edu/public/tree/master/subjects/forum">
+            <span>the task description</span>
+          </a>
+          and
+          <a
+            href="https://github.com/01-edu/public/tree/master/subjects/forum/audit"
+          >
+            <span>audit requirements</span>
+          </a>
+        </div>
+        <a class="error-page__btn" href="/">Back to Homepage</a>
+      </div>
+    </main>
+  </body>
+</html>
+{{end}}

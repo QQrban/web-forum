@@ -1,0 +1,102 @@
+{{define "post"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {{- with .Post }}
+    <title>{{- with .Post}} {{ .Title}} {{- end}}</title>
+    {{- end}}
+    <link rel="icon" type="image/x-icon" href="/static/images/icon.png" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div id="loader" class="hidden">
+      <span class="loader"></span>
+    </div>
+    <div id="overlay"></div>
+    <div id="select-avatar"></div>
+    {{- template "header" .}}
+    <main class="post-page">
+      {{- template "banner" .}} {{template "search" .}}
+      <div class="post-page__container">
+        <div class="post-page__header">
+          {{- with .Post }}
+          <div class="comments__commentator latest-posts__commentator">
+            {{- with .Author }}
+            <div class="comments__commentator__avatar">
+              <div class="avatar-container">
+                <img src="{{ .Avatar }}" alt="avatar" />
+              </div>
+            </div>
+            {{- end }}
+            <div class="commentator__info">
+              {{- with .Post }}
+              <div class="commentator__topic">{{ .Title }}</div>
+              {{- end }}
+              <div class="commentator__name-date">
+                {{- with .Author }}
+                <div class="commentator__name">{{ .Username }}</div>
+                {{- end }} &#8226; {{- with .Post }}
+                <div class="commentator__date">{{ .Created }}</div>
+                {{- end }}
+              </div>
+            </div>
+          </div>
+          <button class="lime-pill back-button">Go Back</button>
+          {{- end }}
+        </div>
+        <div class="post-page__comment__container"></div>
+        <div
+          id="active-commentator"
+          class="bg-with-stroke post-page__comment hidden"
+        >
+          <div class="comment__commentator-profile">
+            {{- with .Current }}
+            <div class="comments__commentator__avatar">
+              <div
+                class="avatar-container comment__commentator__avatar-container"
+              >
+                <img src="{{ .Avatar }}" alt="avatar" />
+              </div>
+            </div>
+            <h5 class="commentator-profile__name current__username">{{ .Username }} <span>(you)</span></h5>
+            <div class="commentator-profile__statistics">
+              <div class="statistics__numbers">
+                <span class="numbers__heading">Posts: </span>
+                <span class="numbers__number"> {{ .Posts }} </span>
+              </div>
+              <div class="statistics__numbers">
+                <span class="reactions-numbers__heading">Comments: </span>
+                <span class="numbers__number"> {{ .Comments }} </span>
+              </div>
+            </div>
+            <div class="commentator-profile__member">
+              Member for
+              <span> {{ .Days }} </span>
+              day(s)
+            </div>
+            {{- end }}
+          </div>
+          <div class="comment__body-container">
+            <form id="comment__body__add-comment">
+              <textarea
+                minlength="1"
+                maxlength="1500"
+                placeholder="Write your comment here..."
+                class="bg-with-stroke body__add-comment__textarea"
+              ></textarea>
+              <button class="lime-pill" id="submit-comment">Comment</button>
+            </form>
+          </div>
+        </div>
+        <div id="comment__body__guest">
+          You must be logged in to post comments
+        </div>
+      </div>
+    </main>
+    {{template "footer" .Stats}}
+    <script type="module" src="/static/js/App.js"></script>
+  </body>
+</html>
+{{end}}
