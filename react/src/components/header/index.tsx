@@ -63,6 +63,7 @@ const Logo = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 `;
 
 const LogoImgContainer = styled.div`
@@ -85,6 +86,6 @@ const ButtonsContainer = styled.div`
 `;
 
 const HeaderBtn = styled(buttonLeaf)`
-  padding: 10px 15px;
+  padding: 5px 15px;
   font-size: 22px;
 `;

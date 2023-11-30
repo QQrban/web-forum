@@ -90,6 +90,7 @@ const RegisterContainer = styled(bgWithStroke)`
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
+  z-index: 9999;
 `;
 
 const LoginHeading = styled.h3`
@@ -137,7 +138,7 @@ const ImgContainer = styled.div`
 `;
 
 const AvatarsHeading = styled.div`
-  font-size: 19px;
+  font-size: 21px;
 `;
 
 const AllAvatars = styled.div`

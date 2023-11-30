@@ -21,7 +21,7 @@ export const StyledInput = styled.input`
   background: inherit;
   border-bottom: 1px solid ${variables.borderBlue};
   padding: 3px 10px;
-  font-size: 18px;
+  font-size: 20px;
   color: ${variables.white};
   font-family: ${variables.ffSquada};
 `;

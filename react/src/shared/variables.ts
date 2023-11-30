@@ -12,5 +12,5 @@ export const variables = {
   ffSquada: "'Squada One', Tahoma, sans-serif",
   ffMons: "'Montserrat', sans-serif",
   linearBg:
-    "linear-gradient(354deg, #0d2852 -60.68%, rgba(13, 40, 82, 0) 94.19%",
+    "linear-gradient(360deg,#0f2951 -60.68%,rgb(6 16 31) 94.19%)!important;",
 };

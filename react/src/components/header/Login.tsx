@@ -52,6 +52,8 @@ const LoginContainer = styled(bgWithStroke)`
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 9999;
+  gap: 30px;
 `;
 
 const LoginHeading = styled.h3`
@@ -75,5 +77,7 @@ const SignUpButton = styled.button`
 
 const StyledButton = styled(buttonLeaf)`
   font-size: 32px;
-  padding: 8px 30px;
+  max-width: 150px;
+  align-self: center;
+  padding: 6px 20px;
 `;
